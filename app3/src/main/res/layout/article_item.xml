@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<!--        android:background="@drawable/yuan_juxing"
+-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <!-- 定义一个TextView，用于作为列表项的一部分。 -->
+        <ImageView android:id="@+id/header2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:paddingLeft="10dp"/>
+
+        <TextView android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#f0f"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+    <TextView android:id="@+id/desc"
+        android:layout_weight="11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:drawablePadding="2dp"
+        android:textColor="#ccc"
+        android:drawableLeft="@drawable/ok1"
+        android:layout_gravity="center"/>
+    <ImageView android:id="@+id/header"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:paddingLeft="10dp"
+        android:layout_gravity="center"/>
+</LinearLayout>

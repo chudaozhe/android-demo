@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<books>
+    <book price="9.9" 出版日期="2009年">x99</book>
+    <book price="8.9" 出版日期="2008年">x88</book>
+    <book price="7.9" 出版日期="2007年">x77</book>
+</books>

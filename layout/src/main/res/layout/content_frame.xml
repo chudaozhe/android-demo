@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:layout_width="200pt"
+        android:layout_height="200pt"
+        android:background="#f00"
+        android:layout_gravity="center"
+        android:text="hehe1"
+        />
+    <TextView
+        android:layout_width="100pt"
+        android:layout_height="100pt"
+        android:background="#ccc"
+        android:layout_gravity="center"
+        android:text="hehe2"
+        />
+    <TextView
+        android:layout_width="50pt"
+        android:layout_height="50pt"
+        android:background="#f98"
+        android:layout_gravity="center"
+        android:text="hehe3"
+        />
+    <TextView
+        android:layout_width="10pt"
+        android:layout_height="10pt"
+        android:background="#f08"
+        android:layout_gravity="center"
+        android:text="hehe4"
+        />
+</FrameLayout>

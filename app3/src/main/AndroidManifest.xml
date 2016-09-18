@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.work.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> -->
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon144"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/title_activity_result"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListActivity"
+            android:label="@string/title_activity_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TabTestActivity"
+            android:label="@string/title_activity_tab_test"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListDiyActivity"
+            android:label="@string/title_activity_list_diy"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ArticleActivity" />
+        <activity android:name=".TagsActivity"/>
+    </application>
+
+</manifest>
