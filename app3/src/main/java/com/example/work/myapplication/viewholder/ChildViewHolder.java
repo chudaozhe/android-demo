@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.work.myapplication.ArticleBean;
 import com.example.work.myapplication.R;
 
 
