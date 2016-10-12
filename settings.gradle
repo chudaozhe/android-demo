@@ -1,1 +1,1 @@
-include ':layout', ':contentprovider_app1', ':viewpager', ':toolbar', ':fragment', ':tablayout', ':image', ':app3', ':toolbar2', ':actionbar', ':restest', ':contentprovider_app2', ':materialtabs', ':service', ':diyview', ':data', ':sample', ':recycler'
+include ':layout', ':contentprovider_app1', ':viewpager', ':toolbar', ':fragment', ':tablayout', ':image', ':app3', ':toolbar2', ':actionbar', ':restest', ':contentprovider_app2', ':materialtabs', ':service', ':diyview'
