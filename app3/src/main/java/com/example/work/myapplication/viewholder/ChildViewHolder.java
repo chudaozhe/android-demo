@@ -1,9 +1,9 @@
 package com.example.work.myapplication.viewholder;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.work.myapplication.ArticleBean;
 import com.example.work.myapplication.R;
 
 
@@ -14,19 +14,23 @@ import com.example.work.myapplication.R;
  */
 public class ChildViewHolder extends BaseViewHolder {
 
-	public TextView text;
-	public TextView desc;
-	public ImageView image;
+	public TextView aid;
+	public TextView name;
+	public TextView args;
 
 	public ChildViewHolder(View itemView) {
 		super(itemView);
-		text = (TextView) itemView.findViewById(R.id.text);
-		desc = (TextView) itemView.findViewById(R.id.desc);
-		image = (ImageView) itemView.findViewById(R.id.image);
+
+		aid = (TextView) itemView.findViewById(R.id.aid);
+		name = (TextView) itemView.findViewById(R.id.name);
+		args = (TextView) itemView.findViewById(R.id.args);
 	}
 
-	public void bindView(String str, int position) {
-		text.setText(str);
+	public void bindView(ArticleBean str, int position) {
+		aid.setText(str.getId());
+		name.setText(str.getName());
+		args.setText(str.getArgs());
+//		args.setText(str);
 	}
 
 }

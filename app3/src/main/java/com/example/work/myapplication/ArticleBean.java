@@ -16,13 +16,13 @@ public class ArticleBean  implements Serializable {
 //    remark: "获取文件类型，$path中不能有中文",
 //    hot: "0"
     //id
-    private int id;
+    private String id;
     //分类id
     private int cid;
     //名称
     private String name;
     //参数
-    private String orgs;
+    private String args;
     //返回值
     private String output;
     //例子
@@ -32,11 +32,11 @@ public class ArticleBean  implements Serializable {
     //热度
     private int hot;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -56,12 +56,12 @@ public class ArticleBean  implements Serializable {
         this.name = name;
     }
 
-    public String getOrgs() {
-        return orgs;
+    public String getArgs() {
+        return args;
     }
 
-    public void setOrgs(String orgs) {
-        this.orgs = orgs;
+    public void setArgs(String orgs) {
+        this.args = orgs;
     }
 
     public String getOutput() {
@@ -102,7 +102,7 @@ public class ArticleBean  implements Serializable {
                 "id=" + id +
                 ", cid=" + cid +
                 ", name='" + name + '\'' +
-                ", orgs='" + orgs + '\'' +
+                ", args='" + args + '\'' +
                 ", output='" + output + '\'' +
                 ", example='" + example + '\'' +
                 ", remark='" + remark + '\'' +

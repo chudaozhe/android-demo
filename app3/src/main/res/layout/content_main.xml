@@ -103,4 +103,10 @@
         android:layout_height="wrap_content"
         android:text="进入Tags"
         android:textSize="20sp"/>
+    <Button
+        android:onClick="Recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="进入RecyclerView"
+        android:textSize="20sp"/>
 </TableLayout>

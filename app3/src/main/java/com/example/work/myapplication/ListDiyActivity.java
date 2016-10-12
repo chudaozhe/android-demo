@@ -6,15 +6,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,14 +39,9 @@ public class ListDiyActivity extends AppCompatActivity {
     private ProgressBar footerProgressBar;
     private TextView footerTextView;
     private ImageView footerImageView;
-    private String[] names = new String[]
-            { "虎头", "弄玉", "李清照", "李白"};
-    private String[] descs = new String[]
-            { "可爱的小孩", "一个擅长音乐的女孩"
-                    , "一个擅长文学的女性", "浪漫主义诗人"};
-    private int[] imageIds = new int[]
-            { R.drawable.img1 , R.drawable.img1
-                    , R.drawable.img1 , R.drawable.img1};
+    private int i=1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +53,19 @@ public class ListDiyActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        myAdapter = new RecyclerAdapter(this);
+        myAdapter = new RecyclerAdapter(this, new RecyclerAdapter.OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(ListDiyActivity.this, "id:"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(myAdapter);
+        recyclerView.addItemDecoration(new AdvanceDecoration(this, OrientationHelper.VERTICAL));
+
 
         // init SuperSwipeRefreshLayout
         swipeRefreshLayout = (SuperSwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-        swipeRefreshLayout.setHeaderViewBackgroundColor(0xff888888);
+//        swipeRefreshLayout.setHeaderViewBackgroundColor(0xFFFFFFFF);
         swipeRefreshLayout.setHeaderView(createHeaderView());// add headerView
         swipeRefreshLayout.setFooterView(createFooterView());
         swipeRefreshLayout.setTargetScrollWithLayout(true);
@@ -75,6 +81,11 @@ public class ListDiyActivity extends AppCompatActivity {
 
                             @Override
                             public void run() {
+//                                myAdapter.removeAll(0,myAdapter.getItemCount());
+                                List<ArticleBean> result =initDatas(1);
+//                                myAdapter.addAll(result, 0);
+                                myAdapter.getTopic(result);
+                                i=1;
                                 swipeRefreshLayout.setRefreshing(false);
                                 progressBar.setVisibility(View.GONE);
                             }
@@ -96,21 +107,32 @@ public class ListDiyActivity extends AppCompatActivity {
 
         swipeRefreshLayout
                 .setOnPushLoadMoreListener(new SuperSwipeRefreshLayout.OnPushLoadMoreListener() {
-
                     @Override
                     public void onLoadMore() {
                         footerTextView.setText("正在加载...");
                         footerImageView.setVisibility(View.GONE);
                         footerProgressBar.setVisibility(View.VISIBLE);
                         new Handler().postDelayed(new Runnable() {
-
                             @Override
                             public void run() {
                                 footerImageView.setVisibility(View.VISIBLE);
                                 footerProgressBar.setVisibility(View.GONE);
+                                int p=i+1;
+                                System.out.println("cw:new:p=" + p);
+
+                                List<ArticleBean> result =initDatas(p);
+                                if (result.size()>0) {
+                                    int n = getDataCount(getData(p));
+                                    myAdapter.addAll(result, (p - 1) * 16);
+
+                                    //定位，显示第一条新数据
+                                    recyclerView.smoothScrollToPosition(linearLayoutManager.getItemCount() - n);
+                                    //linearLayoutManager.scrollToPositionWithOffset(page, 49);
+                                    if (0<n) i++;
+                                }
                                 swipeRefreshLayout.setLoadMore(false);
                             }
-                        }, 5000);
+                        }, 2000);
                     }
 
                     @Override
@@ -129,7 +151,9 @@ public class ListDiyActivity extends AppCompatActivity {
                 });
 //        setData();
 
-        initDatas();
+        List<ArticleBean> result =initDatas(1);
+        myAdapter.addAll(result, 0);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +167,7 @@ public class ListDiyActivity extends AppCompatActivity {
     public void setData(){
         // 创建一个List集合，List集合的元素是Map
         List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+
         try {
             String result = HttpUtil.getRequest("http://test.cuiwei.net/manual?type=api&cid=1");
             JSONArray arr = new JSONArray(result);
@@ -163,7 +188,6 @@ public class ListDiyActivity extends AppCompatActivity {
 
         }
 
-
         // 创建一个SimpleAdapter
 //        SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems,
 //                R.layout.simple_item,
@@ -173,12 +197,47 @@ public class ListDiyActivity extends AppCompatActivity {
 //        // 为ListView设置Adapter
 //        list.setAdapter(simpleAdapter);
     }
-    private void initDatas() {
-        List<String> list = new ArrayList<String>();
-        for (int i = 0; i < 50; i++) {
-            list.add("item " + i);
+    private JSONArray getData(int page){
+        //http://test.cuiwei.net/manual?type=api&cid=1
+        String result = null;
+        JSONArray arr = null;
+        try {
+            result = HttpUtil.getRequest("http://192.168.9.101/items/manual/index.php?type=api&cid=1&page=" + page + "&max=16");
+            Log.d("TAG", "cwcom in");
+            arr = new JSONArray(result);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        myAdapter.addAll(list, 0);
+        return arr;
+    }
+    private int getDataCount(JSONArray arr){
+        if (arr.length() < 1) return 0;
+        return arr.length();
+    }
+    private List<ArticleBean> initDatas(int page) {
+//        List<String> list = new ArrayList<String>();
+//        for (int i = 0; i < 50; i++) {
+//            list.add("item " + i);
+//        }
+        List<ArticleBean> datas = new ArrayList<>();
+
+        JSONArray arr=getData(page);
+        if (arr.length()>0) {
+            for (int i = 0; i < arr.length(); i++) {
+                ArticleBean articleBean = new ArticleBean();
+                try {
+                    articleBean.setId(String.valueOf(arr.getJSONObject(i).getInt("id")));
+                    articleBean.setCid(arr.getJSONObject(i).getInt("cid"));
+                    articleBean.setName(arr.getJSONObject(i).getString("name"));
+                    articleBean.setArgs(arr.getJSONObject(i).getString("args"));
+                    datas.add(articleBean);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else return new ArrayList<>();
+
+        return datas;
     }
     private View createFooterView() {
         View footerView = LayoutInflater.from(swipeRefreshLayout.getContext())

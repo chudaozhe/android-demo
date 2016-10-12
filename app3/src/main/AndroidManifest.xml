@@ -38,7 +38,8 @@
             android:label="@string/title_activity_list_diy"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ArticleActivity" />
-        <activity android:name=".TagsActivity"/>
+        <activity android:name=".TagsActivity" />
+        <activity android:name=".RecyclerActivity"></activity>
     </application>
 
 </manifest>

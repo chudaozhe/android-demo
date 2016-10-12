@@ -21,17 +21,32 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 	private Context mContext;
-	private List<String> mDataSet;
+	private ArrayList<ArticleBean> mDataSet;
+	private  OnRecyclerItemClickListener onRecyclerItemClickListener;
+	public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener onRecyclerItemClickListener) {
+		this.onRecyclerItemClickListener = onRecyclerItemClickListener;
+	}
 
-	public RecyclerAdapter(Context context) {
+	public RecyclerAdapter(Context context,OnRecyclerItemClickListener onRecyclerItemClickListener) {
 		mContext = context;
-		mDataSet = new ArrayList<String>();
+		mDataSet = new ArrayList<>();
+		this.onRecyclerItemClickListener=onRecyclerItemClickListener;
 	}
 
 	@Override
 	public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View view = LayoutInflater.from(mContext).inflate(
+		final View view = LayoutInflater.from(mContext).inflate(
 				R.layout.item_recycler_child, parent, false);
+		//这边可以做一些属性设置，甚至事件监听绑定
+		//view.setBackgroundColor(Color.RED);
+		view.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(onRecyclerItemClickListener!=null){
+					onRecyclerItemClickListener.onItemClick(view, (int)view.getTag());
+				}
+			}
+		});
 		return new ChildViewHolder(view);
 	}
 
@@ -39,8 +54,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 	public void onBindViewHolder(BaseViewHolder holder, int position) {
 		ChildViewHolder textViewHolder = (ChildViewHolder) holder;
 		textViewHolder.bindView(mDataSet.get(position), position);
-	}
+		holder.itemView.setTag(Integer.parseInt(mDataSet.get(position).getId()));
 
+	}
 
 	@Override
 	public int getItemCount() {
@@ -66,14 +82,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 		return 0;
 	}
 
-	public void add(String text, int position) {
+	public void add(ArticleBean text, int position) {
 		mDataSet.add(position, text);
 		notifyItemInserted(position);
 	}
 
-	public void addAll(List<String> list, int position) {
+	public void addAll(List list, int position) {
 		mDataSet.addAll(position, list);
 		notifyItemRangeInserted(position, list.size());
+	}
+
+	public void getTopic(List list) {
+		mDataSet=new ArrayList<>();
+		mDataSet.addAll(0, list);
+		notifyDataSetChanged();
+	}
+	public interface OnRecyclerItemClickListener {
+		/**
+		 * item view 回调方法
+		 * @param view  被点击的view
+		 * @param position 点击索引
+		 */
+		void onItemClick(View view, int position);
 	}
 
 }

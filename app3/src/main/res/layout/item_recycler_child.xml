@@ -3,7 +3,7 @@
 	android:id="@+id/container"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:background="#ffcecece" >
+	android:layout_marginBottom="10dp">
 
 	<ImageView
 		android:id="@+id/image"
@@ -17,9 +17,8 @@
 		android:contentDescription="@string/app_name"
 		android:scaleType="fitXY"
 		android:src="@drawable/file" />
-
 	<TextView
-		android:id="@+id/text"
+		android:id="@+id/aid"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
@@ -29,15 +28,29 @@
 		android:layout_toRightOf="@id/image"
 		android:gravity="center"
 		android:singleLine="true"
-		android:text="taobao"
-		android:textColor="@android:color/white"
+		android:text="1"
+		android:textColor="@android:color/black"
 		android:textSize="14sp" />
 	<TextView
-		android:id="@+id/desc"
-		android:text="testjj"
+		android:id="@+id/name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
-		android:layout_toEndOf="@id/text"
-		android:layout_toRightOf="@id/text"
+		android:layout_marginLeft="10dp"
+		android:layout_marginStart="10dp"
+		android:layout_toEndOf="@id/aid"
+		android:layout_toRightOf="@id/aid"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="taobao"
+		android:textColor="@android:color/black"
+		android:textSize="14sp" />
+	<TextView
+		android:id="@+id/args"
+		android:text="..."
+		android:layout_centerVertical="true"
+		android:layout_toEndOf="@id/name"
+		android:layout_toRightOf="@id/name"
 		android:gravity="center"
 		android:singleLine="true"
 		android:layout_marginLeft="10dp"
