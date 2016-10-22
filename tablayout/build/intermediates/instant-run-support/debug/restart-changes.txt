@@ -1,1 +1,0 @@
-CHANGED,D:\Users\home\AndroidStudioProjects\project2\tablayout\build\intermediates\transforms\instantRun\debug\folders\1\5\main\test\cuiwei\net\app2\MainActivity.class
