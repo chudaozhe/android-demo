@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TextView textView = (TextView) findViewById(R.id.diyfont);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/pingfang.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/iconfont.ttf");
         textView.setTypeface(typeface);
 
         TextView tv = (TextView) findViewById(R.id.iconfont);

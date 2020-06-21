@@ -17,12 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-//    api fileTree(include: ['*.jar'], dir: 'libs')
-//    api 'androidx.appcompat:appcompat:1.1.0'
-//    api 'com.google.android.material:material:1.1.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+
 }

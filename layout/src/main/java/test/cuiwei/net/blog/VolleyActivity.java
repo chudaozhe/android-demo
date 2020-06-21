@@ -41,7 +41,7 @@ public class VolleyActivity extends AppCompatActivity {
         ImageLoader.ImageListener listener = ImageLoader.getImageListener(img1,
                 R.drawable.ic_launcher, R.drawable.ic_launcher);
 
-        imageLoader.get("http://test.cuiwei.net/phpMyAdmin/themes/pmahomme/img/logo_right.png", listener);
+        imageLoader.get("https://test.cuiwei.net/phpMyAdmin/themes/pmahomme/img/logo_right.png", listener);
 
 
 

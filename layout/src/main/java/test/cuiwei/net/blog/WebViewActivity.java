@@ -24,7 +24,7 @@ public class WebViewActivity extends AppCompatActivity {
         String url2 = url.getText().toString();
         WebView page = (WebView) findViewById(R.id.page);
 
-        page.loadUrl("http://www.cuiwei.net");
+        page.loadUrl("https://www.cuiwei.net");
         WebSettings wSet = page.getSettings();
         wSet.setJavaScriptEnabled(true);
         page.setWebViewClient(new WebViewClient() {
