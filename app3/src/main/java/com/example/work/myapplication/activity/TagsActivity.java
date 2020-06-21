@@ -1,4 +1,4 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import com.example.work.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

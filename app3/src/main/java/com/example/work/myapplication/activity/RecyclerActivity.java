@@ -1,57 +1,52 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.activity;
 
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.json.JSONArray;
+import com.example.work.myapplication.R;
+import com.example.work.myapplication.bean.Manual;
+import com.example.work.myapplication.listener.OnManualListListener;
+import com.example.work.myapplication.model.ManualModel;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerActivity extends AppCompatActivity {
-
+public class RecyclerActivity extends AppCompatActivity implements OnManualListListener {
+    public RecyclerView recyclerview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-        RecyclerView recyclerview = (RecyclerView)
-                findViewById(R.id.recyclerview);
+        recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerview.setLayoutManager(new LinearLayoutManager(
                 this, LinearLayoutManager.VERTICAL, false));
 
-        ArrayList<ArticleBean> datas = new ArrayList<>();
+        ManualModel model = new ManualModel();
+        model.list(1, this);
+    }
 
-        try {
-            String result = HttpUtil.getRequest("http://test.cuiwei.net/manual?type=api&cid=1");
-            Log.d("TAG", "cwcom in");
-            JSONArray arr = new JSONArray(result);
+    @Override
+    public void onSuccess(ArrayList<Manual> list) {
+        recyclerview.setAdapter(new DemoAdapter(this, list));
+    }
 
-            for(int i=0; i<arr.length(); i++)
-            {
-                ArticleBean articleBean = new ArticleBean();
-                articleBean.setName(arr.getJSONObject(i).getString("name"));
-                articleBean.setArgs(arr.getJSONObject(i).getString("args"));
-                datas.add(articleBean);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    @Override
+    public void onError() {
 
-        }
-        recyclerview.setAdapter(new DemoAdapter(this, datas));
     }
 
     public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.VH> {
-        private List<ArticleBean> dataList;
+        private List<Manual> dataList;
         private Context context;
 
-        public DemoAdapter(Context context, ArrayList<ArticleBean> datas) {
+        public DemoAdapter(Context context, ArrayList<Manual> datas) {
             this.dataList = datas;
             this.context = context;
         }

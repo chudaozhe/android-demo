@@ -1,4 +1,4 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.bean;
 
 import java.io.Serializable;
 

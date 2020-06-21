@@ -1,29 +1,33 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.activity;
 
 import android.os.Bundle;
+
+import com.example.work.myapplication.R;
+import com.example.work.myapplication.bean.Manual;
+import com.example.work.myapplication.listener.OnManualListListener;
+import com.example.work.myapplication.model.ManualModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import org.json.JSONArray;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ListActivity extends AppCompatActivity {
 
+public class ListActivity extends AppCompatActivity implements OnManualListListener {
+    public ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final ListView list = (ListView) findViewById(R.id.newlist);
+        listView = (ListView) findViewById(R.id.newlist);
 
         //定义刷新小圈的颜色
         final SwipeRefreshLayout sr = (SwipeRefreshLayout) findViewById(R.id.sr);
@@ -36,13 +40,12 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 //重新请求
-                setData(list);
+                setData();
                 sr.setRefreshing(false);
             }
         });
 
-        //绑定数据
-        setData(list);
+        setData();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,23 +57,30 @@ public class ListActivity extends AppCompatActivity {
         });
     }
     //绑定数据
-    public void setData(ListView list){
+    public void setData(){
 //        String [] data = {"第一条","第二条", "第三条"};
         try {
-            String result = HttpUtil.getRequest("http://test.cuiwei.net/manual?type=api&cid=1");
-            Log.d("TAG", "cwcom in");
-            JSONArray arr = new JSONArray(result);
-            ArrayList data = new ArrayList();
-            for(int i=0; i<arr.length(); i++)
-            {
-                data.add(arr.getJSONObject(i).getString("name"));
-            }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.news_item, data);
-            list.setAdapter(adapter);
+            ManualModel jokeModel = new ManualModel();
+            jokeModel.list(1, this);
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
+    @Override
+    public void onSuccess(ArrayList<Manual> arr) {
+        //绑定数据
+        ArrayList<String> data = new ArrayList<String>();
+        for(int i=0; i<arr.size(); i++) {
+            Manual item=arr.get(i);
+            data.add(item.name);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.news_item, data);
+        this.listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onError() {
+        Toast.makeText(this, "出错来哦！", Toast.LENGTH_SHORT).show();
+    }
 }

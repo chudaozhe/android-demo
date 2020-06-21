@@ -1,16 +1,18 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.activity;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.example.work.myapplication.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ArticleActivity extends AppCompatActivity {
+public class ListDiyActivity2 extends AppCompatActivity {
 
     private String[] title={"标题1", "标题2", "标题3", "标题4"};
     private String[] descs={"描述1", "描述2", "描述3", "描述4"};

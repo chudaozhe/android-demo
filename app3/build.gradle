@@ -18,12 +18,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
 //    api fileTree(include: ['*.jar'], dir: 'libs')
 //    api 'androidx.appcompat:appcompat:1.1.0'
-//    api 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    // Okhttp库
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    // Retrofit库
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    //日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    //添加retrofit gson转换会自动下载gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 }

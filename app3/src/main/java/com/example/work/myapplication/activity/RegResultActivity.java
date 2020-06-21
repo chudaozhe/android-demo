@@ -1,7 +1,13 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.work.myapplication.R;
+import com.example.work.myapplication.bean.Person;
+import com.example.work.myapplication.bean.Reg;
+import com.example.work.myapplication.listener.OnRegListener;
+import com.example.work.myapplication.model.RegModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import org.json.JSONObject;
-
-import java.util.HashMap;
-
-public class ResultActivity extends AppCompatActivity {
-
+public class RegResultActivity extends AppCompatActivity implements OnRegListener {
+    public TextView msg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,24 +28,17 @@ public class ResultActivity extends AppCompatActivity {
         TextView name = (TextView) findViewById(R.id.name);
         TextView passwd = (TextView) findViewById(R.id.passwd);
         TextView sex = (TextView) findViewById(R.id.sex);
-        TextView msg = (TextView) findViewById(R.id.msg);
+        msg = (TextView) findViewById(R.id.msg);
 
         Intent intent = getIntent();
         Person p = (Person) intent.getSerializableExtra("person");
-        name.setText("你的名字：" + p.getName());
+        name.setText("你的用户名：" + p.getName());
         passwd.setText("你的密码：" + p.getPasswd());
         sex.setText("你的性别：" + p.getSex());
 
-        String result = null;
         try {
-//            result = HttpUtil.getRequest("http://192.168.1.61/Items/test/test.php");
-            HashMap sf = new HashMap();
-            sf.put("name",p.getName());
-            result = HttpUtil.postRequest("http://test.cuiwei.net/reg.php",sf);
-            JSONObject json = new JSONObject(result);
-
-//            if (json.get("status") == 1)
-            msg.setText("提示信息：" + json.get("msg"));
+            RegModel model = new RegModel();
+            model.reg(p.getName(), this);
         } catch (Exception e) {
             e.printStackTrace();
             msg.setText("错误提示：" + e.toString());
@@ -60,4 +55,13 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onSuccess(Reg reg) {
+        this.msg.setText("成功，提示信息：" + reg.msg);
+    }
+
+    @Override
+    public void onError() {
+        this.msg.setText("注册失败了, 用户名不能为空");
+    }
 }

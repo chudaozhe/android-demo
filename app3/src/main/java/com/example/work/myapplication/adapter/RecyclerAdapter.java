@@ -1,4 +1,4 @@
-package com.example.work.myapplication;
+package com.example.work.myapplication.adapter;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.work.myapplication.R;
+import com.example.work.myapplication.bean.Manual;
 import com.example.work.myapplication.viewholder.BaseViewHolder;
 import com.example.work.myapplication.viewholder.ChildViewHolder;
 
@@ -21,7 +23,7 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 	private Context mContext;
-	private ArrayList<ArticleBean> mDataSet;
+	private ArrayList<Manual> mDataSet;
 	private  OnRecyclerItemClickListener onRecyclerItemClickListener;
 	public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener onRecyclerItemClickListener) {
 		this.onRecyclerItemClickListener = onRecyclerItemClickListener;
@@ -54,7 +56,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 	public void onBindViewHolder(BaseViewHolder holder, int position) {
 		ChildViewHolder textViewHolder = (ChildViewHolder) holder;
 		textViewHolder.bindView(mDataSet.get(position), position);
-		holder.itemView.setTag(Integer.parseInt(mDataSet.get(position).getId()));
+		holder.itemView.setTag(mDataSet.get(position).getId());
 
 	}
 
@@ -82,7 +84,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 		return 0;
 	}
 
-	public void add(ArticleBean text, int position) {
+	public void add(Manual text, int position) {
 		mDataSet.add(position, text);
 		notifyItemInserted(position);
 	}

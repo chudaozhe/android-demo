@@ -2,6 +2,15 @@ package com.example.work.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.work.myapplication.activity.ListActivity;
+import com.example.work.myapplication.activity.ListDiyActivity2;
+import com.example.work.myapplication.activity.ListDiyActivity;
+import com.example.work.myapplication.activity.RecyclerActivity;
+import com.example.work.myapplication.activity.RegResultActivity;
+import com.example.work.myapplication.activity.TabTestActivity;
+import com.example.work.myapplication.activity.TagsActivity;
+import com.example.work.myapplication.bean.Person;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle data = new Bundle();
                 data.putSerializable("person", p);
 
-                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegResultActivity.class);
                 intent.putExtras(data);
                 startActivity(intent);
 
@@ -89,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     //文章
     public void Article(View v){
-        Intent intent = new Intent(MainActivity.this, ArticleActivity.class);
+        Intent intent = new Intent(MainActivity.this, ListDiyActivity2.class);
         startActivity(intent);
     }
     //Tags

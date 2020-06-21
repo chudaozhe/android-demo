@@ -74,39 +74,45 @@
         android:layout_height="wrap_content"
         android:text="进入列表List_下拉刷新"
         android:textSize="20sp"
-        />
-    <Button
-        android:id="@+id/tab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="进入Tab"
-        android:textSize="20sp"
+            android:textAllCaps="false"
         />
     <Button
         android:id="@+id/diylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="进入DiyList"
+        android:text="进入DiyRecyclerView"
         android:textSize="20sp"
-        />
+            android:textAllCaps="false"
+            />
     <Button
         android:id="@+id/article"
         android:onClick="Article"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="进入Article"
-        android:textSize="20sp"/>
-    <Button
-        android:id="@+id/tags"
-        android:onClick="Tags"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="进入Tags"
-        android:textSize="20sp"/>
+        android:text="进入DiyListView2"
+        android:textSize="20sp"            android:textAllCaps="false"
+            />
     <Button
         android:onClick="Recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="进入RecyclerView"
-        android:textSize="20sp"/>
+        android:textSize="20sp"            android:textAllCaps="false"
+            />
+    <Button
+            android:id="@+id/tags"
+            android:onClick="Tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="进入Tags"
+            android:textSize="20sp"            android:textAllCaps="false"
+            />
+    <Button
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="进入Tab"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            />
 </TableLayout>
