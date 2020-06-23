@@ -1,17 +1,17 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
+
 import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+
+import net.cuiwei.layout.R;
 
 public class VolleyActivity extends AppCompatActivity {
 
@@ -19,9 +19,6 @@ public class VolleyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
 
         ImageView img1 = (ImageView) findViewById(R.id.img1);
 
@@ -48,14 +45,6 @@ public class VolleyActivity extends AppCompatActivity {
 //        img1.setImageResource(R.drawable.ok);
 //        img1.setBackgroundResource(R.drawable.ok);
 //        img1.setImageDrawable( getResources().getDrawable(drawable.ok));
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
 }

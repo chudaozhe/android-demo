@@ -1,4 +1,4 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import net.cuiwei.layout.R;
 
 public class MainFragment extends Fragment
 {

@@ -1,15 +1,14 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
+
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+
+import net.cuiwei.layout.R;
 
 public class WebViewActivity extends AppCompatActivity {
 
@@ -17,14 +16,12 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        EditText url = (EditText) findViewById(R.id.url);
+        EditText url = findViewById(R.id.url);
         String url2 = url.getText().toString();
-        WebView page = (WebView) findViewById(R.id.page);
+        WebView page =findViewById(R.id.page);
 
-        page.loadUrl("https://www.cuiwei.net");
+        page.loadUrl("https://test.cuiwei.net/");
         WebSettings wSet = page.getSettings();
         wSet.setJavaScriptEnabled(true);
         page.setWebViewClient(new WebViewClient() {
@@ -32,17 +29,6 @@ public class WebViewActivity extends AppCompatActivity {
                 //重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
                 view.loadUrl(url);
                 return true;
-            }
-
-        });
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
     }

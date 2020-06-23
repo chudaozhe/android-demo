@@ -1,4 +1,4 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

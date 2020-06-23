@@ -1,4 +1,4 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

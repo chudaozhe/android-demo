@@ -1,4 +1,4 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 
 import android.annotation.TargetApi;
@@ -19,6 +19,9 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+
+import net.cuiwei.layout.R;
+
 import java.util.List;
 
 /**

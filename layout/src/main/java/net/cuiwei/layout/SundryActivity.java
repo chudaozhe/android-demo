@@ -1,4 +1,4 @@
-package test.cuiwei.net.blog;
+package net.cuiwei.layout;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
@@ -7,13 +7,14 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import net.cuiwei.layout.R;
 
 public class SundryActivity extends AppCompatActivity {
 
@@ -24,8 +25,6 @@ public class SundryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sundry);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -39,15 +38,6 @@ public class SundryActivity extends AppCompatActivity {
                         , Toast.LENGTH_SHORT
                 );
                 toast.show();
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
     }
