@@ -5,7 +5,7 @@ android {
 //    buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "project.cuiwei.net.contentprovider_app1"
+        applicationId "net.cuiwei.contentprovider_app1"
         minSdkVersion 25
         targetSdkVersion 29
         versionCode 1

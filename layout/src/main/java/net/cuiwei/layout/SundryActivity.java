@@ -2,9 +2,12 @@ package net.cuiwei.layout;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -51,7 +54,9 @@ public class SundryActivity extends AppCompatActivity {
                 , TextActivity.class);
         PendingIntent pi = PendingIntent.getActivity(
                 SundryActivity.this, 0, intent, 0);
-        Notification notify = new Notification.Builder(this)
+        //1、NotificationManager
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification.Builder notify = new Notification.Builder(this)
                 // 设置打开该通知，该通知自动消失
                 .setAutoCancel(true)
                         // 设置显示在状态栏的通知提示信息
@@ -68,10 +73,19 @@ public class SundryActivity extends AppCompatActivity {
                         // 设置通知的自定义声音
                 .setWhen(System.currentTimeMillis())
                         // 设改通知将要启动程序的Intent
-                .setContentIntent(pi)
-                .build();
+                .setContentIntent(pi);
+        //兼容android 8
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("001","my_channel", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.enableLights(true); //是否在桌面icon右上角展示小红点
+            channel.setLightColor(Color.GREEN); //小红点颜色
+            channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
+            manager.createNotificationChannel(channel);
+            notify.setChannelId("001");
+        }
+
         // 发送通知
-        nm.notify(NOTIFICATION_ID, notify);
+        nm.notify(NOTIFICATION_ID, notify.build());
     }
     // 为删除通知的按钮的点击事件定义事件处理方法
     public void del(View v)

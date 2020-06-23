@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import net.cuiwei.diyview.R;
-
 public class MainActivity extends AppCompatActivity {
 
     int[] imgs = {
