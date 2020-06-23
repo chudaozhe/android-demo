@@ -5,7 +5,7 @@ android {
 //    buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "project.cuiwei.net.fragment"
+        applicationId "net.cuiwei.fragment"
         minSdkVersion 25
         targetSdkVersion 29
         versionCode 1

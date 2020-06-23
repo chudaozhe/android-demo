@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.work.myapplication">
+    package="net.cuiwei.app3">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name="net.cuiwei.app3.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -23,24 +23,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.RegResultActivity"
+            android:name="net.cuiwei.app3.activity.RegResultActivity"
             android:label="@string/title_activity_result"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.ListActivity"
+            android:name="net.cuiwei.app3.activity.ListActivity"
             android:label="@string/title_activity_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.TabTestActivity"
+            android:name="net.cuiwei.app3.activity.TabTestActivity"
             android:label="@string/title_activity_tab_test"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.ListDiyActivity"
+            android:name="net.cuiwei.app3.activity.ListDiyActivity"
             android:label="@string/title_activity_list_diy"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ListDiyActivity2" />
-        <activity android:name=".activity.TagsActivity" />
-        <activity android:name=".activity.RecyclerActivity"></activity>
+        <activity android:name="net.cuiwei.app3.activity.ListDiyActivity2" />
+        <activity android:name="net.cuiwei.app3.activity.TagsActivity" />
+        <activity android:name="net.cuiwei.app3.activity.RecyclerActivity"></activity>
     </application>
 
 </manifest>
