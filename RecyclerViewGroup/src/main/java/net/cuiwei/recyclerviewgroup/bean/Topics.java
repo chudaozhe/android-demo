@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Topics {
     public String title;
-    public List<Topic> topics;
+    public List<Topic> topic;
 
     public String getTitle() {
         return title;
@@ -14,11 +14,11 @@ public class Topics {
         this.title = title;
     }
 
-    public List<Topic> getTopics() {
-        return topics;
+    public List<Topic> getTopic() {
+        return topic;
     }
 
-    public void setTopics(List<Topic> topics) {
-        this.topics = topics;
+    public void setTopic(List<Topic> topic) {
+        this.topic = topic;
     }
 }

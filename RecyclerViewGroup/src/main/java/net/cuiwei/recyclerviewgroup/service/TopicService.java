@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 
 public interface TopicService {
     //段子列表
-    @GET("/manual/?type=topic")
+    @GET("/manual?type=topic")
     Observable<ArrayList<Topics>> list();
 
 

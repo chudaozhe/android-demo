@@ -32,14 +32,12 @@ public class TopicModel {
 
                     @Override
                     public void onNext(ArrayList<Topics> re) {
-                        //JokeListResponse re=response.body();
                         if (re.size() > 0) {
-                            Log.e("joke", "成功");
+                            Log.e("result", "成功");
                             System.out.println(re.toString());
                             mlistener.onSuccess(re);
-
                         } else {
-                            Log.e("joke", "失败");
+                            Log.e("result", "失败");
                             mlistener.onError();
                         }
                     }
