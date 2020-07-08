@@ -1,3 +1,4 @@
+include ':listview'
 include ':navigation'
 include ':RecyclerViewGroup'
 include ':layout', ':contentprovider_app1', ':viewpager', ':toolbar', ':fragment', ':tablayout', ':image', ':app3', ':actionbar', ':res', ':contentprovider_app2', ':service', ':diyview'
