@@ -1,19 +1,19 @@
-package net.cuiwei.diyview;
+package net.cuiwei.diyview.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-public class MyViewGroup extends ViewGroup {
-    private final static String TAG = "MyViewGroup";
+public class TagsLayout extends ViewGroup {
+    private final static String TAG = "TagsLayout";
 
     private final static int VIEW_MARGIN=10;
 
-    public MyViewGroup(Context context) {
+    public TagsLayout(Context context) {
         super(context);
     }
-    public MyViewGroup(Context context,AttributeSet attrs){
+    public TagsLayout(Context context, AttributeSet attrs){
         super(context, attrs);
     }
     @Override

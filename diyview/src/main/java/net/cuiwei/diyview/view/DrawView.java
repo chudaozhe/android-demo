@@ -1,4 +1,4 @@
-package net.cuiwei.diyview;
+package net.cuiwei.diyview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,6 +10,7 @@ import android.view.View;
 
 /**
  * Created by home on 2015/11/19.
+ * 随光标移动的圆点
  */
 public class DrawView extends View
 {

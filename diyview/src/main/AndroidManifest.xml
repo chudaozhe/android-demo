@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FlowActivity"
+            android:name=".ContentActivity"
             android:screenOrientation="portrait" />
     </application>
 
