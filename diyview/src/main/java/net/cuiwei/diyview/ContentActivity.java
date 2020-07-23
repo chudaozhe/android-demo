@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import net.cuiwei.diyview.fragment.GridFragment;
 import net.cuiwei.diyview.fragment.ImagesToggleFragment;
 import net.cuiwei.diyview.fragment.TagsFragment;
 
@@ -25,6 +26,8 @@ public class ContentActivity extends AppCompatActivity {
             mManager.beginTransaction().replace(R.id.container,new TagsFragment()).addToBackStack(null).commit();
         }else if (action.equals("images_toggle")){
             mManager.beginTransaction().replace(R.id.container,new ImagesToggleFragment()).addToBackStack(null).commit();
+        }else if (action.equals("grid")){
+            mManager.beginTransaction().replace(R.id.container,new GridFragment()).addToBackStack(null).commit();
         }
     }
 }

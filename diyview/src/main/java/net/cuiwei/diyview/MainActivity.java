@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.tags).setOnClickListener(this);
         findViewById(R.id.images_toggle).setOnClickListener(this);
+        findViewById(R.id.grid).setOnClickListener(this);
     }
 
     @Override
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.images_toggle:
                 intent.setAction("images_toggle");
+                break;
+            case R.id.grid:
+                intent.setAction("grid");
                 break;
         }
         startActivity(intent);
