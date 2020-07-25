@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.tags).setOnClickListener(this);
         findViewById(R.id.images_toggle).setOnClickListener(this);
         findViewById(R.id.grid).setOnClickListener(this);
+        findViewById(R.id.demo).setOnClickListener(this);
     }
 
     @Override
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.grid:
                 intent.setAction("grid");
+                break;
+            case R.id.demo:
+                intent.setAction("demo");
                 break;
         }
         startActivity(intent);

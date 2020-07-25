@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import net.cuiwei.diyview.fragment.DemoFragment;
 import net.cuiwei.diyview.fragment.GridFragment;
 import net.cuiwei.diyview.fragment.ImagesToggleFragment;
 import net.cuiwei.diyview.fragment.TagsFragment;
@@ -23,11 +24,13 @@ public class ContentActivity extends AppCompatActivity {
         String action=intent.getAction();
         //System.out.println("action:"+action);
         if (action.equals("tags")){
-            mManager.beginTransaction().replace(R.id.container,new TagsFragment()).addToBackStack(null).commit();
+            mManager.beginTransaction().replace(R.id.container,new TagsFragment()).commit();
         }else if (action.equals("images_toggle")){
-            mManager.beginTransaction().replace(R.id.container,new ImagesToggleFragment()).addToBackStack(null).commit();
+            mManager.beginTransaction().replace(R.id.container,new ImagesToggleFragment()).commit();
         }else if (action.equals("grid")){
-            mManager.beginTransaction().replace(R.id.container,new GridFragment()).addToBackStack(null).commit();
+            mManager.beginTransaction().replace(R.id.container,new GridFragment()).commit();
+        }else if (action.equals("demo")){
+            mManager.beginTransaction().replace(R.id.container,new DemoFragment()).commit();
         }
     }
 }

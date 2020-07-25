@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,8 @@ public class TagsFragment extends Fragment {
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
+                    Log.e("TagsFragment-id:", String.valueOf(id));
+//                    Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
                 }
             });
             tv.setText(str[i]);

@@ -19,6 +19,11 @@
             android:text="九宫格"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+    <Button
+            android:id="@+id/demo"
+            android:text="demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     <net.cuiwei.diyview.view.DrawView
             android:background="#ccc"
