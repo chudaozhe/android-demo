@@ -1,19 +1,11 @@
 package net.cuiwei.toolbar;
 
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.cuiwei.toolbar.R;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,26 +14,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);//toolbar仅仅是个viewGroup, 这里用作actionBar
+        getSupportActionBar().setDisplayShowTitleEnabled(false);//隐藏标题
 
-        final ActionBar ab = getSupportActionBar();
-        ab.setDisplayShowTitleEnabled(false);  //取消Toolbar的內建靠左title(像Actionbar的特性)
-
-        //ab.setDisplayHomeAsUpEnabled(true);  回到上一個Activity時使用
-
-        List<Fragment> fl=new ArrayList<Fragment>(); //填充要的Fragment頁卡
-        fl.add(new MyFragment());
-        fl.add(new BlankFragment());
-
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        if (viewPager != null) {
-            viewPager.setAdapter(new MainPageAdapter(getSupportFragmentManager(), fl , MainActivity.this));  //設定Adapter給viewPager
-        }
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setTabGravity(1);
-        tabLayout.setupWithViewPager(viewPager);   //連結viewPager給TabLayout
+        //toolbar.setTitle("首页");
+        //toolbar.setSubtitle("小标题");
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher); //加载返回图标
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {   //为图标设置监听器
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -54,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
