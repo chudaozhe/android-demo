@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="window_background">#ccc</color>
+
+    <color name="orange">#ffff8100</color>
+    <color name="green">#ff008000</color>
+    <color name="red">#ffff0000</color>
+    <color name="purple">#ff800080</color>
+
 </resources>
