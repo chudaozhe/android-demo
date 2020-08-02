@@ -32,6 +32,8 @@
         <item name="android:navigationBarColor">@color/red</item>
         <!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
         <item name="colorAccent">@color/green</item>
+        <!--按钮 水波纹效果 颜色-->
+        <item name="colorControlHighlight">#ff333333</item>
     </style>
 
 </resources>
