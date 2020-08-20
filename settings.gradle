@@ -1,3 +1,5 @@
+include ':file'
+include ':event'
 include ':dialog'
 include ':listview'
 include ':navigation'
