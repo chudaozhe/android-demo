@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrawerActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_leftmenu"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="#fff"
+            android:orientation="vertical" >
+            <TextView
+                android:text="左一个"
+                android:onClick="Common"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <!--左侧菜单布局-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_rightmenu"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="#fff"
+            android:orientation="vertical" >
+
+            <!--右侧菜单布局-->
+            <TextView
+                android:text="又一个"
+                android:onClick="Commony"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

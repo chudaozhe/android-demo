@@ -1,3 +1,4 @@
+include ':news'
 include ':file'
 include ':event'
 include ':dialog'

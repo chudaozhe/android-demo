@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ImageTextActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:text="点赞"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#333" />
+        <TextView
+            android:text="收藏"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="#ccc">
+        <TextView
+            android:id="@+id/title"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:drawableLeft="@drawable/ok"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="这是一条新闻标题这是一条新闻标题。。。。"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="10-15"
+            android:layout_below="@id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="100赞"
+            android:layout_below="@id/title"
+            android:layout_alignRight="@id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/pic1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:gravity="left">
+            <TextView
+                android:text="测试一下"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"/>
+            <ImageView
+                android:src="@drawable/pic1"
+                android:gravity="left"
+                android:layout_width="200dp"
+                android:layout_height="100dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:gravity="left">
+            <ImageView
+                android:src="@drawable/pic1"
+                android:layout_gravity="left"
+                android:layout_width="300dp"
+                android:layout_height="100dp" />
+            <TextView
+                android:text="测试一下"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:gravity="left">
+            <ImageView
+                android:src="@drawable/pic1"
+                android:layout_gravity="left"
+                android:layout_width="200dp"
+                android:layout_height="100dp" />
+            <TextView
+                android:text="测试一下"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:gravity="center">
+            <ImageView
+                android:src="@drawable/pic1"
+                android:layout_gravity="left"
+                android:layout_width="200dp"
+                android:layout_height="100dp" />
+            <TextView
+                android:text="测试一下"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/banner"
+        android:layout_width="400dp"
+        android:layout_height="300dp">
+
+        <ImageView
+            android:src="@drawable/pic1"
+            android:layout_width="400dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:textColor="#f00"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="20dp"
+            android:text="内容提要。。。"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>
