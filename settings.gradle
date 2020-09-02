@@ -1,3 +1,4 @@
+include ':lottie'
 include ':news'
 include ':file'
 include ':event'
