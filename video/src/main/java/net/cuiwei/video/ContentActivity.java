@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import net.cuiwei.video.fragment.Video1Fragment;
+import net.cuiwei.video.fragment.Video2Fragment;
 
 public class ContentActivity extends AppCompatActivity {
     public FragmentManager mManager;
@@ -18,9 +19,10 @@ public class ContentActivity extends AppCompatActivity {
         mManager=getSupportFragmentManager();
         Intent intent=getIntent();
         String action=intent.getAction();
-        //System.out.println("action:"+action);
         if (action.equals("video1")){
             mManager.beginTransaction().replace(R.id.container,new Video1Fragment()).commit();
+        }else if(action.equals("video2")){
+            mManager.beginTransaction().replace(R.id.container,new Video2Fragment()).commit();
         }
     }
 }
