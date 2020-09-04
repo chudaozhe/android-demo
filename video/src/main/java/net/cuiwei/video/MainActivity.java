@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.video1).setOnClickListener(this);
         findViewById(R.id.video2).setOnClickListener(this);
+        findViewById(R.id.video3).setOnClickListener(this);
 
         //AssetsUtil
 //        String[] files= AssetsUtil.getFilesFromAssets(MainActivity.this, "");
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.video2:
                 action="video2";
+                break;
+            case R.id.video3:
+                action="video3";
                 break;
         }
         intent.setAction(action);

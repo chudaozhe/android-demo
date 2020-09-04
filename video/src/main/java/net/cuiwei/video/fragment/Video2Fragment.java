@@ -11,6 +11,9 @@ import android.widget.*;
 import androidx.fragment.app.Fragment;
 import net.cuiwei.video.R;
 
+/**
+ * 2. MediaPlayer+SurfaceView+自定义控制器
+ */
 public class Video2Fragment extends Fragment implements SurfaceHolder.Callback,
         MediaPlayer.OnPreparedListener,
         MediaPlayer.OnCompletionListener,

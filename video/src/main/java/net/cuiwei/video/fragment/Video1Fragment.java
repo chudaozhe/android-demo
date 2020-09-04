@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import net.cuiwei.video.R;
 
+/**
+ * 1、MediaController+VideoView实现方式
+ * MediaController 可选
+ */
 public class Video1Fragment extends Fragment {
     public VideoView videoView;
     @Override
