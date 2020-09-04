@@ -1,7 +1,6 @@
 package net.cuiwei.video.fragment;
 
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -45,7 +44,7 @@ public class Video3Fragment extends Fragment implements
             }
         };
         ((ContentActivity) getActivity()).registerFragmentTouchListener(fragmentTouchListener);
-        mediaPlayer = new MediaPlayer();
+        mediaPlayer = new MediaPlayer(); //MediaPlayer.create(getContext(), R.raw.f123);
         controller = new MediaController(getContext());
         controller.setAnchorView(view.findViewById(R.id.root_ll));
         initSurfaceView(view);
@@ -67,7 +66,9 @@ public class Video3Fragment extends Fragment implements
             //mediaPlayer.setDataSource(path);
             String packageName=getActivity().getPackageName();
             Log.e("video1", packageName);
-            mediaPlayer.setDataSource(getContext(), Uri.parse("android.resource://" + packageName + "/" + R.raw.f123));
+            //
+            //mediaPlayer.setDataSource(getContext(), Uri.parse("android.resource://" + packageName + "/" + R.raw.f123));
+            mediaPlayer.setDataSource("https://cw-test.oss-cn-hangzhou.aliyuncs.com/joke/2020-5-22/1590105822290.mp4");
             mediaPlayer.setOnBufferingUpdateListener(this);
             //mediaPlayer.prepare();
 

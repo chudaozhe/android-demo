@@ -36,6 +36,12 @@ public class ContentActivity extends AppCompatActivity {
             mManager.beginTransaction().replace(R.id.container,new Video3Fragment()).commit();
         }
     }
+
+    /**
+     * 事件分发，先于onTouchEvent（事件处理）
+     * @param event
+     * @return
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         for (FragmentTouchListener listener : mFragmentTouchListeners) {
