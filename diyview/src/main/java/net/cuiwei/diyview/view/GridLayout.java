@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,14 +19,17 @@ public class GridLayout extends ViewGroup {
     private int mMaxChildWidth = 0;
     private int mMaxChildHeight = 0;
     int count = 0;
+    public Context context;
 
     public GridLayout(Context context) {
         super(context);
-        init();
+        this.context=context;
+        init2();
     }
     public GridLayout(Context context, AttributeSet attrs){
         super(context, attrs);
-        init();
+        this.context=context;
+        init2();
     }
     /**
      * 父视图问子视图你想要多大空间
@@ -78,7 +82,8 @@ public class GridLayout extends ViewGroup {
         if (count == 0) return;
         //int colums2=(int)colums;
         int gridW = (width - margin * (colums - 1)) / colums;// 格子宽度
-        int gridH = (height - margin * rows) / rows;// 格子高度
+        //int gridH = (height - margin * rows) / rows;// 格子高度
+        int gridH=gridW;
         Log.e("onLayout", "gridW="+gridW+" gridH="+gridH);
         //gridH=400;
         int left = 0;
@@ -117,6 +122,16 @@ public class GridLayout extends ViewGroup {
             imageView.setBackgroundResource(R.mipmap.ic_launcher);
             this.addView(imageView);
             this.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+    }
+    public void init2() {
+        for (int i = 0; i < 9; i++) {
+            View view = LayoutInflater.from(context).inflate(R.layout.publish_grid_item, null);
+            ImageView imageView = view.findViewById(R.id.iv);
+            ImageView play = view.findViewById(R.id.play);
+            imageView.setBackgroundResource(R.mipmap.ic_launcher);//srcs[index]
+//            Glide.with(context).load("https://cw-test.oss-cn-hangzhou.aliyuncs.com/"+imgs[index]+"?x-oss-process=image/resize,w_202,h_202,m_fill").into(imageView);
+            this.addView(view);
         }
     }
 }
