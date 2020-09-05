@@ -1,13 +1,12 @@
 package net.cuiwei.viewpager;
 
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
-import net.cuiwei.viewpager.adapter.MyAdapter;
+import net.cuiwei.viewpager.adapter.Viewpager2Adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class Viewpager2Activity extends AppCompatActivity {
     //装图片id的数组
     private int[]bitmaps = {R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4};
     private ViewPager viewpager;
-    private List<ImageView> list;//装ImageView的集合
+    private List<ImageView> list;
     private ImageView imageView;
     private ImageView[] tips;//装点点的集合
     private LinearLayout indicators ;
@@ -28,6 +27,14 @@ public class Viewpager2Activity extends AppCompatActivity {
         viewpager = findViewById(R.id.viewPager);
         indicators = findViewById(R.id.indicators);
 
+        setIndicators();
+        setViewpager();
+    }
+
+    /**
+     * 设置viewpager
+     */
+    public void setViewpager(){
         //将imageView图片资源存在集合中
         list = new ArrayList<ImageView>();
         for (int i = 0; i < bitmaps.length; i++) {
@@ -40,25 +47,8 @@ public class Viewpager2Activity extends AppCompatActivity {
             list.add(imageView);
         }
 
-        //将点点装入到结集合中
-        tips = new ImageView[bitmaps.length];
-        for (int i = 0; i < bitmaps.length; i++) {
-            imageView = new ImageView(Viewpager2Activity.this);
-            LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(50,50);
-            layout.setMargins(10, 0, 10, 0);
-            imageView.setLayoutParams(layout);//图片宽高
-            //imageView.setPadding(100, 0, 10, 0);
-            tips[i]=imageView;
-            if(i==0){
-                tips[i].setBackgroundResource(R.mipmap.white);
-            }else {
-                tips[i].setBackgroundResource(R.mipmap.black);
-            }
-            indicators.addView(imageView);
-        }
-
         //设置适配器
-        viewpager.setAdapter(new MyAdapter(list,this));
+        viewpager.setAdapter(new Viewpager2Adapter(list,this));
         viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             public void onPageSelected(int arg0) {
@@ -74,6 +64,27 @@ public class Viewpager2Activity extends AppCompatActivity {
         // 第一次初始化界面时，显示的界面
         // 设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
         viewpager.setCurrentItem((bitmaps.length) * 100);
+    }
+    /**
+     * 设置指示器
+     */
+    public void setIndicators(){
+        //将点点装入到结集合中
+        tips = new ImageView[bitmaps.length];
+        for (int i = 0; i < bitmaps.length; i++) {
+            imageView = new ImageView(this);
+            LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(50,50);
+            layout.setMargins(10, 0, 10, 0);
+            imageView.setLayoutParams(layout);//图片宽高
+            //imageView.setPadding(100, 0, 10, 0);
+            tips[i]=imageView;
+            if(i==0){
+                tips[i].setBackgroundResource(R.mipmap.white);
+            }else {
+                tips[i].setBackgroundResource(R.mipmap.black);
+            }
+            indicators.addView(imageView);
+        }
     }
     /**
      * 设置选中的tip的背景 ，选中哪个图片，哪个图片的点点就变成白的
