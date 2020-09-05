@@ -1,4 +1,4 @@
-package net.cuiwei.viewpager;
+package net.cuiwei.viewpager.adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
