@@ -15,10 +15,9 @@ public class Viewpager2Activity extends AppCompatActivity {
     //装图片id的数组
     private int[]bitmaps = {R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4};
     private ViewPager viewpager;
-    private List<ImageView> list;
-    private ImageView imageView;
-    private ImageView[] tips;//装点点的集合
-    private LinearLayout indicators ;
+    //指示器
+    private LinearLayout indicators;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,20 +34,18 @@ public class Viewpager2Activity extends AppCompatActivity {
      * 设置viewpager
      */
     public void setViewpager(){
-        //将imageView图片资源存在集合中
-        list = new ArrayList<ImageView>();
+        List<ImageView> images = new ArrayList<ImageView>();
         for (int i = 0; i < bitmaps.length; i++) {
-            imageView = new ImageView(Viewpager2Activity.this);
+            ImageView imageView = new ImageView(this);
             imageView.setImageResource(bitmaps[i]);
             //imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);//背景不拉伸
             //imageView.setLayoutParams(new ViewGroup.LayoutParams(500,100));
-            //为imageView设置tag，将id传入，方便页面跳转时，发送图片的资源id
             imageView.setTag(bitmaps[i]);
-            list.add(imageView);
+            images.add(imageView);
         }
 
         //设置适配器
-        viewpager.setAdapter(new Viewpager2Adapter(list,this));
+        viewpager.setAdapter(new Viewpager2Adapter(images,this));
         viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             public void onPageSelected(int arg0) {
@@ -61,40 +58,38 @@ public class Viewpager2Activity extends AppCompatActivity {
 
             }
         });
-        // 第一次初始化界面时，显示的界面
-        // 设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
         viewpager.setCurrentItem((bitmaps.length) * 100);
     }
     /**
      * 设置指示器
      */
     public void setIndicators(){
-        //将点点装入到结集合中
-        tips = new ImageView[bitmaps.length];
         for (int i = 0; i < bitmaps.length; i++) {
-            imageView = new ImageView(this);
+            ImageView imageView = new ImageView(this);
             LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(50,50);
             layout.setMargins(10, 0, 10, 0);
             imageView.setLayoutParams(layout);//图片宽高
             //imageView.setPadding(100, 0, 10, 0);
-            tips[i]=imageView;
             if(i==0){
-                tips[i].setBackgroundResource(R.mipmap.white);
+                imageView.setBackgroundResource(R.mipmap.white);
             }else {
-                tips[i].setBackgroundResource(R.mipmap.black);
+                imageView.setBackgroundResource(R.mipmap.black);
             }
             indicators.addView(imageView);
         }
     }
     /**
-     * 设置选中的tip的背景 ，选中哪个图片，哪个图片的点点就变成白的
+     * 设置当前指示器
      */
     private void setImageBackground(int selectItems) {
-        for (int i = 0; i < tips.length; i++) {
+        //Log.e("viewpage-count", indicators.getChildCount()+"");
+        for (int i = 0; i < indicators.getChildCount(); i++) {
+            ImageView imageView=(ImageView) indicators.getChildAt(i);
+            //Log.e("viewpage-view", indicators.getChildAt(i).toString());
             if (i == selectItems) {
-                tips[i].setBackgroundResource(R.mipmap.white);
+                imageView.setBackgroundResource(R.mipmap.white);
             } else {
-                tips[i].setBackgroundResource(R.mipmap.black);
+                imageView.setBackgroundResource(R.mipmap.black);
             }
         }
     }
