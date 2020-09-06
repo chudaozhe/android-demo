@@ -1,5 +1,7 @@
 package net.cuiwei.viewpager;
 
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -7,14 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
 import net.cuiwei.viewpager.adapter.Viewpager2Adapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.cuiwei.viewpager.view.NoScrollViewPager;
 
 public class Viewpager2Activity extends AppCompatActivity {
-    //装图片id的数组
-    private int[]bitmaps = {R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4};
-    private ViewPager viewpager;
+    private int[] ids = {R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4};//
+    private NoScrollViewPager viewpager;
     //指示器
     private LinearLayout indicators;
 
@@ -28,43 +27,44 @@ public class Viewpager2Activity extends AppCompatActivity {
 
         setIndicators();
         setViewpager();
+        //1张图片时 隐藏指示器，并禁止滑动
+        if (ids.length<2) {
+            indicators.setVisibility(View.GONE);
+        }else {
+            viewpager.setNoScroll(false);
+        }
+
     }
 
     /**
      * 设置viewpager
      */
     public void setViewpager(){
-        List<ImageView> images = new ArrayList<ImageView>();
-        for (int i = 0; i < bitmaps.length; i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(bitmaps[i]);
-            //imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);//背景不拉伸
-            //imageView.setLayoutParams(new ViewGroup.LayoutParams(500,100));
-            imageView.setTag(bitmaps[i]);
-            images.add(imageView);
-        }
-
         //设置适配器
-        viewpager.setAdapter(new Viewpager2Adapter(images,this));
+        viewpager.setAdapter(new Viewpager2Adapter(ids,this));
         viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            public void onPageSelected(int arg0) {
-                setImageBackground(arg0 % bitmaps.length);
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                setImageBackground(position % ids.length);
             }
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            @Override
+            public void onPageSelected(int position) {
 
             }
-            public void onPageScrollStateChanged(int arg0) {
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
             }
         });
-        viewpager.setCurrentItem((bitmaps.length) * 100);
+        //默认第一个张
+        viewpager.setCurrentItem(0);
     }
     /**
      * 设置指示器
      */
     public void setIndicators(){
-        for (int i = 0; i < bitmaps.length; i++) {
+        for (int i = 0; i < ids.length; i++) {
             ImageView imageView = new ImageView(this);
             LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(50,50);
             layout.setMargins(10, 0, 10, 0);
