@@ -3,35 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:gravity="bottom"
-    >
+    android:gravity="bottom">
 
     <TextView
         android:id="@+id/home"
         android:text="首页"
         android:drawableTop="@drawable/ok"
-        style="@style/footer_nav"
-        />
+        style="@style/footer_nav" />
 
 
     <TextView
         android:id="@+id/product"
         android:text="产品中心"
         android:drawableTop="@drawable/ok"
-        style="@style/footer_nav"
-        />
+        style="@style/footer_nav" />
 
     <TextView
         android:id="@+id/news"
         android:text="新闻中心"
         android:drawableTop="@drawable/ok"
-        style="@style/footer_nav"
-        />
+        style="@style/footer_nav" />
 
     <TextView
         android:id="@+id/contact"
         android:text="联系我们"
         android:drawableTop="@drawable/ok"
-        style="@style/footer_nav"
-        />
+        style="@style/footer_nav" />
 </LinearLayout>

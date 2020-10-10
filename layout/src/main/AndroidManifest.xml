@@ -21,47 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LinearActivity"
-            android:label="@string/title_activity_linear"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".TableActivity"
-            android:label="@string/title_activity_table"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".FrameActivity"
-            android:label="@string/title_activity_frame"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".GridActivity"
-            android:label="@string/title_activity_grid"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".TextActivity"
-            android:label="@string/title_activity_text"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SpinnerActivity"
-            android:label="@string/title_activity_spinner"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SundryActivity"
-            android:label="@string/title_activity_sundry"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".DialogActivity"
-            android:label="@string/title_activity_dialog"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity
-            android:name=".WebViewActivity"
-            android:label="@string/title_activity_web_view"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".VolleyActivity"
-            android:label="@string/title_activity_volley"
+            android:name=".ContentActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

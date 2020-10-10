@@ -3,213 +3,106 @@ package net.cuiwei.layout;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import net.cuiwei.layout.R;
+import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        TextView home = (TextView) findViewById(R.id.home);
-        TextView product = (TextView) findViewById(R.id.product);
-        TextView news = (TextView) findViewById(R.id.news);
-        TextView contact = (TextView) findViewById(R.id.contact);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "首页",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        product.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "产品中心",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "新闻中心", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "联系我们",Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        //底部tab
+        findViewById(R.id.home).setOnClickListener(this);
+        findViewById(R.id.product).setOnClickListener(this);
+        findViewById(R.id.news).setOnClickListener(this);
+        findViewById(R.id.contact).setOnClickListener(this);
 
         //调起Linear
-        Button linear = (Button) findViewById(R.id.linear);
-        linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentd = new Intent();
-                intentd.setClass(MainActivity.this, LinearActivity.class);
-                startActivity(intentd);
-            }
-        });
+        findViewById(R.id.linear).setOnClickListener(this);
 
         //调起Table
-        Button table = (Button) findViewById(R.id.table);
-        table.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intentd = new Intent();
-                intentd.setClass(MainActivity.this, TableActivity.class);
-                startActivity(intentd);
-            }
-        });
+        findViewById(R.id.table).setOnClickListener(this);
 
         //调起Frame
-        Button frame = (Button) findViewById(R.id.frame);
-        frame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, FrameActivity.class);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.frame).setOnClickListener(this);
 
         //调起Grid
-        Button grid = (Button) findViewById(R.id.grid);
-        grid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, GridActivity.class);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.grid).setOnClickListener(this);
 
         //调起Text
-        Button text = (Button) findViewById(R.id.text);
-        text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, TextActivity.class);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.text).setOnClickListener(this);
 
-        //调起Spinner
-        Button spinner = (Button) findViewById(R.id.spinner);
-        spinner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, SpinnerActivity.class);
-                startActivity(intent);
-            }
-        });
-        //调起Sundry
-        Button sundry = (Button) findViewById(R.id.sundry);
-        sundry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, SundryActivity.class);
-                startActivity(intent);
-            }
-        });
+        //调起Spinner下拉框
+        findViewById(R.id.spinner).setOnClickListener(this);
+
+        //调起Picker
+        findViewById(R.id.picker).setOnClickListener(this);
+
+        //调起Notify
+        findViewById(R.id.notify).setOnClickListener(this);
+
         //调起Dialog
-        Button dialog = (Button) findViewById(R.id.dialog);
-        dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, DialogActivity.class);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.dialog).setOnClickListener(this);
 
         //调起WebView
-        Button webview = (Button) findViewById(R.id.webview);
-        webview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, WebViewActivity.class);
-                startActivity(intent);
-            }
-        });
-        //调起Volley
-        Button volley = (Button) findViewById(R.id.volley);
-        volley.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, VolleyActivity.class);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.webview).setOnClickListener(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //添加菜单
-        //参数 groupid,itemid,order,string
-        //order 小的排前面
-        menu.add(0,0,100,R.string.action_settings);
-        menu.add(0,1,1000,R.string.action_settings2);
-        menu.add(0,2,2000,R.string.action_settings3);
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            Toast.makeText(MainActivity.this, "jjj", Toast.LENGTH_SHORT)
-//                    .show();
-//            return true;
-//        }
-
-        switch (id) {
-            case 0:
-                Toast.makeText(MainActivity.this, "关于", Toast.LENGTH_SHORT)
-                        .show();
+    public void onClick(View v) {
+        Intent intent=new Intent(MainActivity.this, ContentActivity.class);
+        String action="";
+        switch (v.getId()){
+            case R.id.linear:
+                action="linear_layout";
                 break;
-            case 1:
-                Toast.makeText(MainActivity.this, "意见反馈", Toast.LENGTH_SHORT)
-                        .show();
+            case R.id.frame:
+                action="frame_layout";
                 break;
-            case 2:
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
+            case R.id.grid:
+                action="grid_layout";
                 break;
-            default:
-                Toast.makeText(MainActivity.this, "关于", Toast.LENGTH_SHORT)
-                        .show();
+            case R.id.table:
+                action="table_layout";
+                break;
+            case R.id.webview:
+                action="webview";
+                break;
+            case R.id.picker:
+                action="picker";
+                break;
+            case R.id.notify:
+                action="notify";
+                break;
+            case R.id.spinner:
+                action="spinner";
+                break;
+            case R.id.dialog:
+                action="dialog";
+                break;
+            case R.id.text:
+                action="text";
+                break;
+            case R.id.home:
+                Toast.makeText(MainActivity.this, "首页",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.product:
+                Toast.makeText(MainActivity.this, "产品中心",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.news:
+                Toast.makeText(MainActivity.this, "新闻中心",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.contact:
+                Toast.makeText(MainActivity.this, "联系我们",Toast.LENGTH_SHORT).show();
                 break;
         }
-
-
-        return super.onOptionsItemSelected(item);
+        Integer[] positions={R.id.home, R.id.product, R.id.news, R.id.contact};
+        if(!Arrays.asList(positions).contains(v.getId())){
+            intent.setAction(action);
+            startActivity(intent);
+        }
     }
 }
