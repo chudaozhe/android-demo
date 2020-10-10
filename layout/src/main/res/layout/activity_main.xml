@@ -72,6 +72,12 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="Text练习" />
+        <Button
+            android:id="@+id/demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Demo" />
 
     </LinearLayout>
 

@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //调起WebView
         findViewById(R.id.webview).setOnClickListener(this);
+
+        //调起Demo
+        findViewById(R.id.demo).setOnClickListener(this);
+
     }
 
     @Override
@@ -85,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.text:
                 action="text";
+                break;
+            case R.id.demo:
+                action="demo";
                 break;
             case R.id.home:
                 Toast.makeText(MainActivity.this, "首页",Toast.LENGTH_SHORT).show();

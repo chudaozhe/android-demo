@@ -8,6 +8,7 @@ import net.cuiwei.layout.fragment.base.FrameFragment;
 import net.cuiwei.layout.fragment.base.GridFragment;
 import net.cuiwei.layout.fragment.base.LinearFragment;
 import net.cuiwei.layout.fragment.base.TableFragment;
+import net.cuiwei.layout.fragment.demo.DemoFragment;
 import net.cuiwei.layout.fragment.demo.TextFragment;
 import net.cuiwei.layout.fragment.widget.*;
 
@@ -44,6 +45,8 @@ public class ContentActivity extends AppCompatActivity {
                 mManager.beginTransaction().replace(R.id.container, new DialogFragment()).addToBackStack(null).commit();
             }else if (action.equals("text")) {
                 mManager.beginTransaction().replace(R.id.container, new TextFragment()).addToBackStack(null).commit();
+            }else if (action.equals("demo")) {
+                mManager.beginTransaction().replace(R.id.container, new DemoFragment()).addToBackStack(null).commit();
             }
 
         }
