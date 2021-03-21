@@ -3,6 +3,7 @@ package net.cuiwei.toolbar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,7 +18,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        int screenHeight=DisplayUtil.getScreenHeight(this);
+        int screenWidth=DisplayUtil.getScreenWidth(this);
+        int statusHeight=DisplayUtil.getStatusHeight(this);
+        int navigationBarHeight=DisplayUtil.getNavigationBarHeight(this);
+        boolean checkDeviceHasNavigationBar=DisplayUtil.checkDeviceHasNavigationBar(this);
+        Log.e("screen-statusHeight", String.valueOf(statusHeight));
+        Log.e("screen-navigationBarHeight", String.valueOf(navigationBarHeight));
+        Log.e("screen-checkDeviceHasNavigationBar", String.valueOf(checkDeviceHasNavigationBar));
+        Log.e("screen-height", String.valueOf(screenHeight));
+        Log.e("screen-width", String.valueOf(screenWidth));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        View view = findViewById(R.id.view);
+        view.setBackgroundResource(R.color.colorAccent);
+        view.getLayoutParams().height=370;
+
         setSupportActionBar(toolbar);//toolbar仅仅是个viewGroup, 这里用作actionBar
         getSupportActionBar().setDisplayShowTitleEnabled(false);//隐藏标题
 
@@ -35,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //添加菜单
+        //参数 groupid,itemid,order,string
+        //order 小的排前面
+
+        //menu.add(0,0,100,R.string.action_settings);
+        //menu.add(0,1,1000,R.string.app_name);
+        //menu.add(0,2,2000,R.string.hello_blank_fragment);
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -46,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //Toast.makeText(MainActivity.this, "test.", Toast.LENGTH_SHORT).show();
             return true;
         }
 

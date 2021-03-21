@@ -5,14 +5,11 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/input"
-        android:imeOptions="actionSearch"
+        android:id="@+id/urls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lines="1"
-        android:inputType="text"
-        android:text="https://"
-        />
+        android:minLines="3"
+        android:maxLines="5"/>
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"

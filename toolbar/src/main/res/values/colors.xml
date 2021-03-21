@@ -9,5 +9,7 @@
     <color name="green">#ff008000</color>
     <color name="red">#ffff0000</color>
     <color name="purple">#ff800080</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
 
 </resources>

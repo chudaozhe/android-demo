@@ -4,7 +4,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
         android:background="@color/colorAccent"
         tools:context=".MainActivity">
 
@@ -32,5 +31,35 @@
             android:id="@+id/bt4"
             android:text="底部选择框Dialog"
             />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt5"
+        android:text="公用底部Dialog"
+        />
+    <TextView
+        android:text="第二组"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt6"
+        android:text="确认框" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt7"
+        android:text="好友设置" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt8"
+        android:text="评论框" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt9"
+        android:text="分享" />
 </LinearLayout>
